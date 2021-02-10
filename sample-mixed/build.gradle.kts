@@ -5,6 +5,7 @@ plugins {
     kotlin("android")
     id("kotlin-android-extensions")
     id(Plugin.PLUGIN_ID) version Plugin.VERSION apply false
+    kotlin("kapt")
 }
 
 apply(plugin = Plugin.PLUGIN_ID)
@@ -55,6 +56,8 @@ dependencies {
     implementation(Dependencies.ASPECT_J_RUNTIME)
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
 
+    kapt("com.google.dagger:dagger-compiler:2.25.2")
+
     testImplementation(platform(Dependencies.JUNIT_BOM))
     testImplementation(Dependencies.JUNIT_JUPITER)
     testImplementation(Dependencies.MOCKITO)
@@ -63,4 +66,11 @@ dependencies {
 
 configure<AopWeaveExtension> {
     filter = SampleAppCommon.FILTER
+}
+
+kapt {
+    includeCompileClasspath = false
+    javacOptions {
+        option("-Xmaxerrs", 10000)
+    }
 }
