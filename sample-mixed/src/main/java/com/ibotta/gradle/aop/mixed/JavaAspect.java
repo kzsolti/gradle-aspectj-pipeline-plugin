@@ -9,6 +9,9 @@ import org.aspectj.lang.annotation.Before;
 
 @Aspect
 public class JavaAspect {
+
+    private final CallerType callerType = CallerType.TARGET;
+
     @Before("execution(* demonstrateJavaAOP(..))")
     public void before(JoinPoint joinPoint) {
         MessageListener messageListener = (MessageListener) joinPoint.getArgs()[0];
