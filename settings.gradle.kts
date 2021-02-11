@@ -23,7 +23,7 @@ rootProject.name = "gradle-aspectj-pipeline"
 rootProject.buildFileName = "build.gradle.kts"
 
 if (System.getProperty("publishMode", "").isEmpty()) {
-    include("plugin", "sample-mixed", "sample-kotlin", "sample-java")
+    include("plugin", "sample-mixed", "sample-kotlin", "sample-java", "sample-broken-kapt")
 } else {
     include("plugin")
 }
